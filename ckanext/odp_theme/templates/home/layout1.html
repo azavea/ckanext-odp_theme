@@ -1,0 +1,44 @@
+<!--
+
+This file overrides the layout1.html in
+/usr/lib/ckan/default/src/ckan/ckan/templates/home/.
+
+In the future, we could likely push a new item to the front page layouts
+dropdown in the settings page and rename this file layout4.html.
+
+-->
+<div role="main">
+  <div class="container">
+    <div class="row row1">
+      <div class="span6 col1">
+        {% snippet 'home/snippets/promoted.html' %}
+      </div>
+      <div class="span6 col2">
+        {% snippet 'home/snippets/search.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+<div role="main">
+  <div class="container">
+    <div class="row row2">
+      <div class="span6 col1">
+        {% snippet 'home/snippets/featured_group.html' %}
+      </div>
+      <div class="span6 col2">
+        {% snippet 'home/snippets/featured_organization.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+<div role="main">
+  <div class="container">
+    <div class="row row2">
+      <div class="span6 col1">
+        {% snippet 'home/snippets/latest_datasets.html' %}
+      </div>
+      <div class="span6 col2">
+      </div>
+    </div>
+  </div>
+</div>
