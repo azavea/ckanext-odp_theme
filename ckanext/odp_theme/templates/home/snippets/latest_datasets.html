@@ -1,0 +1,10 @@
+{% set latest_datasets = h.odp_theme_most_recent_datasets() %}
+
+  <div class="module-content box">
+      <header>
+          <h1>Recent Additions</h1>
+      </header>
+      <section>
+        {% snippet 'snippets/package_list.html', packages=latest_datasets %}
+      </section>
+  </div>
