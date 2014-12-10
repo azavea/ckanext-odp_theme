@@ -14,6 +14,12 @@ def most_recent_datasets():
     return filter(lambda ds: not ds['private'], datasets)[:10]
 
 
+def dataset_count():
+    """Return a count of all datasets"""
+
+    return len(tk.get_action('package_list')({}, {}))
+
+
 class ODPThemePlugin(plugins.SingletonPlugin):
     """OpenDataPhilly theme plugin.
 
@@ -31,4 +37,5 @@ class ODPThemePlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         """Register most_recent_datasets function"""
 
-        return {'odp_theme_most_recent_datasets': most_recent_datasets}
+        return {'odp_theme_most_recent_datasets': most_recent_datasets,
+                'odp_theme_dataset_count': dataset_count}
