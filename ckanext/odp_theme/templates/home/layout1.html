@@ -42,9 +42,11 @@ dropdown in the settings page and rename this file layout4.html.
         <div class="module-content box">
           <h1>Browse by Topic</h1>
           <div>
-              {% for topic in ["Topic 1", "Topic 2", "Topic 3"] %}
-                <div>
-                    {{ topic }}
+              {% for topic in h.odp_theme_groups() %}
+                <div style="width:75px; height:75px; display:inline-block;">
+                    <a href="/group/{{ topic.name }}">
+                        {{ topic.display_name }}
+                    </a>
                 </div>
               {% endfor %}
           </div>

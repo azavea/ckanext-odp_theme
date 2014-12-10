@@ -20,6 +20,12 @@ def dataset_count():
     return len(tk.get_action('package_list')({}, {}))
 
 
+def groups():
+    """Return a list of groups"""
+
+    return tk.get_action('group_list')({}, {'all_fields': True})
+
+
 class ODPThemePlugin(plugins.SingletonPlugin):
     """OpenDataPhilly theme plugin.
 
@@ -35,7 +41,8 @@ class ODPThemePlugin(plugins.SingletonPlugin):
         tk.add_template_directory(config, 'templates')
 
     def get_helpers(self):
-        """Register most_recent_datasets function"""
+        """Register odp_theme_* helper functions"""
 
         return {'odp_theme_most_recent_datasets': most_recent_datasets,
-                'odp_theme_dataset_count': dataset_count}
+                'odp_theme_dataset_count': dataset_count,
+                'odp_theme_groups': groups}
