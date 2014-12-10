@@ -10,11 +10,27 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main">
   <div class="container">
     <div class="row row1">
-      <div class="span6 col1">
+      <div class="span12 col1">
         {% snippet 'home/snippets/promoted.html' %}
       </div>
-      <div class="span6 col2">
+    </div>
+  </div>
+</div>
+<div role="main">
+  <div class="container">
+    <div class="row row1">
+      <div class="span6 col1">
         {% snippet 'home/snippets/search.html' %}
+      </div>
+      <div class="span6 col2">
+        <div class="module-content box">
+          <p>
+            Get started by searching from
+            <b>{{ h.odp_theme_dataset_count() }}</b>
+            datasets that cover all dimensions of Philadelphia,
+            from city council districts to park locations.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -22,11 +38,28 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main">
   <div class="container">
     <div class="row row2">
-      <div class="span6 col1">
-        {% snippet 'home/snippets/featured_group.html' %}
+      <div class="span12 col1">
+        <div class="module-content box">
+          <h1>Browse by Topic</h1>
+          <div>
+              {% for topic in h.odp_theme_groups() %}
+                <div style="width:75px; height:75px; display:inline-block;">
+                    <a href="/group/{{ topic.name }}">
+                        {{ topic.display_name }}
+                    </a>
+                </div>
+              {% endfor %}
+          </div>
+        </div>
       </div>
-      <div class="span6 col2">
-        {% snippet 'home/snippets/featured_organization.html' %}
+    </div>
+  </div>
+</div>
+<div role="main">
+  <div class="container">
+    <div class="row row2">
+      <div class="span12 col1">
+        {% snippet 'home/snippets/featured_group.html' %}
       </div>
     </div>
   </div>
@@ -38,6 +71,9 @@ dropdown in the settings page and rename this file layout4.html.
         {% snippet 'home/snippets/latest_datasets.html' %}
       </div>
       <div class="span6 col2">
+        <div class="module-content box">
+          <h1>Tweets</h1>
+        </div>
       </div>
     </div>
   </div>
