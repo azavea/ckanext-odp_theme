@@ -49,6 +49,12 @@ class ODPThemePlugin(plugins.SingletonPlugin):
 
         tk.add_template_directory(config, 'templates')
 
+        # this adds directories to make public so we can include custom CSS
+        # and javascript.
+        # see http://docs.ckan.org/en/latest/theming/fanstatic.html
+        tk.add_public_directory(config, 'public')
+        tk.add_resource('fanstatic', 'odp_theme')
+
     def get_helpers(self):
         """Register odp_theme_* helper functions"""
 
