@@ -7,23 +7,48 @@ In the future, we could likely push a new item to the front page layouts
 dropdown in the settings page and rename this file layout4.html.
 
 -->
-<div role="main">
-  <div class="container">
-    <div class="row row1">
-      <div class="span12 col1">
-        {% snippet 'home/snippets/promoted.html' %}
+
+<div class="outer">
+  <div role="main" class="hero inner">
+    <div class="container">
+      <div class="row row1" style="height: 380px;">
+        <div class="span6 col1">
+          <div class="module-content">
+            <h1 class="hero-text-heading hero-text">The central data repository for Philadelphia</h1>
+            <p class="hero-text-description hero-text">OpenDataPhilly is the official open data repository for the city. The data here comes from the government and from individual users.</p>
+          </div>
+        </div>
+        <div class="span4 col1">
+          <div class="carousel-controls">
+            <a class="carousel-control left" href="#vizcarousel" data-slide="prev"><img src="/img/larrow.svg"></a>
+            <a class="carousel-control right" href="#vizcarousel" data-slide="next"><img src="/img/rarrow.svg"></a>
+          </div>
+          <div id="vizcarousel" class="carousel">
+            <div class="spinner"></div>
+            <div class="carousel-inner">
+              <div class="active item in" data-url="/render/viz-partial-efficiency" data-slide-number="0">
+              </div>
+              <div class="item" data-url="/render/viz-partial-landinventory">
+              </div>
+              <div class="item" data-url="/render/viz-partial-crime">
+              </div>
+              <div class="item" data-url="/render/viz-partial-burglaries">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div role="main">
+<div role="main" class="main-search">
   <div class="container">
     <div class="row row1">
       <div class="span6 col1">
         {% snippet 'home/snippets/search.html' %}
       </div>
-      <div class="span6 col2">
-        <div class="module-content box">
+      <div class="span4 offset1 col1">
+        <div class="module-content box getstarted">
           <p>
             Get started by searching from
             <b>{{ h.odp_theme_dataset_count() }}</b>
@@ -35,19 +60,20 @@ dropdown in the settings page and rename this file layout4.html.
     </div>
   </div>
 </div>
-<div role="main">
+<div role="main" class="main-browse">
   <div class="container">
     <div class="row row2">
       <div class="span12 col1">
         <div class="module-content box">
-          <h1>Browse by Topic</h1>
+          <h1 class="browse-heading">Browse by Topic</h1>
           <div>
               {% for topic in h.odp_theme_groups() %}
-                <div style="width:75px; height:75px; display:inline-block;">
-                    <a href="/group/{{ topic.name }}">
-                        {{ topic.display_name }}
-                    </a>
-                </div>
+                <a href="/group/{{ topic.name }}" class="browse-topic">
+                  <img class="browse-topic-image" src="{% if topic.image_display_url != '' %} {{ topic.image_display_url }} {% else %} {{'/img/icons-document.svg'}} {% endif %}">
+                  <div class="browse-topic-title">
+                    {{ topic.display_name }}
+                  </div>
+                </a>
               {% endfor %}
           </div>
         </div>
@@ -55,28 +81,19 @@ dropdown in the settings page and rename this file layout4.html.
     </div>
   </div>
 </div>
-<div role="main">
-  <div class="container">
-    <div class="row row2">
-      <div class="span12 col1">
-        {% snippet 'home/snippets/featured_group.html' %}
-      </div>
-    </div>
-  </div>
-</div>
-<div role="main">
+<div role="main" class="main-featured">
   <div class="container">
     <div class="row row2">
       <div class="span12 col1">
         <div class="module-content box">
-          <h1>Featured Projects</h1>
+          <h1 class="featured-heading">Featured Projects</h1>
             {% snippet "related/snippets/related_list.html", related_items=h.odp_theme_apps() %}
         </div>
       </div>
     </div>
   </div>
 </div>
-<div role="main">
+<div role="main" class="main-updates">
   <div class="container">
     <div class="row row2">
       <div class="span6 col1">
@@ -84,7 +101,9 @@ dropdown in the settings page and rename this file layout4.html.
       </div>
       <div class="span6 col2">
         <div class="module-content box">
-          <h1>Tweets</h1>
+          <h2 class="secondary-heading">Tweets</h2>
+          <a class="twitter-timeline"  height="420" data-chrome="nofooter noscrollbar  noheader transparent" href="https://twitter.com/opendataphilly" data-widget-id="547080711753449472">Tweets by @opendataphilly</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </div>
       </div>
     </div>

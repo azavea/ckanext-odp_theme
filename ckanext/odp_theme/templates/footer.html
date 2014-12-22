@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="container">
+    {% block footer_content %}
+      <div class="row">
+        <div class="span6">
+          <a class="logo" href="{{ h.url('home') }}"><img src="{{ h.url_for_static(g.site_logo) }}" alt="{{ g.site_title }} Logo" height="31" width="210" title="{{ g.site_title }} Logo" /></a>
+        </div>
+        <div class="span3">
+          <ul>
+            {% block header_site_navigation_tabs %}
+              {{ h.build_nav_main(
+                ('search', _('Datasets')),
+                ('organizations_index', _('Organizations')),
+                ('about', _('About'))
+              ) }}
+            {% endblock %}
+          </ul>
+        </div>
+        <div class="span3">
+          <ul>
+            <li><a href="/pages/useful-links">Useful Links</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+            <li><a href="/pages/terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>

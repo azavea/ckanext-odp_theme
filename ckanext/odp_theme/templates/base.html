@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400italic,400,900' rel='stylesheet' type='text/css'>
+  {% resource 'odp_theme/favorite.js' %}
+
+{% endblock %}
