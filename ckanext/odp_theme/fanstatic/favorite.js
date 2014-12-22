@@ -1,3 +1,5 @@
+// Based on http://www.bootply.com/62742
+
 $('#vizcarousel').carousel({
     interval: 0 // remove interval for manual sliding
 });
@@ -10,14 +12,12 @@ $('#vizcarousel').on('slid', function (e) {
     $('.item').removeClass('in');
     // ajax load from data-url
         $('.item.active').load(url,function(result){
-            console.log(this);
             $(this).addClass('in');
         });
 });
 
 $('.carousel-inner').hover(
     function (){
-        console.log(1);
         $('#vizcarousel .vizcarousel-desc').addClass('active');
     },
     function () {
@@ -25,7 +25,6 @@ $('.carousel-inner').hover(
     }
 );
 
-// // load first slide
-// $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){
-//     $('#vizcarousel').carousel(0);
-// });
+$('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){
+    $('#vizcarousel').carousel(0);
+});

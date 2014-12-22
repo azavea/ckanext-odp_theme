@@ -12,9 +12,11 @@ dropdown in the settings page and rename this file layout4.html.
   <div role="main" class="hero inner">
     <div class="container">
       <div class="row row1" style="height: 380px;">
-        <div class="span5 offset1 col1">
-          <h1 class="hero-text-heading hero-text">The central data repository for Philadelphia</h1>
-          <p class="hero-text-description hero-text">OpenDataPhilly is the official open data repository for the city. The data here comes from the government and from individual users.</p>
+        <div class="span6 col1">
+          <div class="module-content">
+            <h1 class="hero-text-heading hero-text">The central data repository for Philadelphia</h1>
+            <p class="hero-text-description hero-text">OpenDataPhilly is the official open data repository for the city. The data here comes from the government and from individual users.</p>
+          </div>
         </div>
         <div class="span4 col1">
           <div class="carousel-controls">
@@ -22,23 +24,16 @@ dropdown in the settings page and rename this file layout4.html.
             <a class="carousel-control right" href="#vizcarousel" data-slide="next"><img src="/img/rarrow.svg"></a>
           </div>
           <div id="vizcarousel" class="carousel">
+            <div class="spinner"></div>
             <div class="carousel-inner">
-              <div class="spinner"></div>
-              <div class="active item in" data-url="/render/62805" data-slide-number="0">
-                <div class="vizcarousel-desc">
-                  <h1 class="vizcarousel-desc-text">PHL Crime Map</h1>
-                  <p class="vizcarousel-desc-text">by Dave Walk</p>
-                  <p class="vizcarousel-desc-text">The Crime Map uses the <a href="#">Philly PPD</a> data set.</p>
-                </div>
-                <img src="/img/odp-viz-1.png" srcset="/img/odp-viz-1@2x.png 2x">
-              </div>
-              <div class="item" data-url="/render/62808">
+              <div class="active item in" data-url="/render/62809" data-slide-number="0">
               </div>
               <div class="item" data-url="/render/62807">
               </div>
-            </div>
-            <div class="carousel-controls">
-
+              <div class="item" data-url="/render/62805">
+              </div>
+              <div class="item" data-url="/render/62808">
+              </div>
             </div>
           </div>
         </div>
@@ -46,7 +41,6 @@ dropdown in the settings page and rename this file layout4.html.
     </div>
   </div>
 </div>
-
 <div role="main" class="main-search">
   <div class="container">
     <div class="row row1">
@@ -69,10 +63,6 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main" class="main-browse">
   <div class="container">
     <div class="row row2">
-<!--       <div class="span3 col1">
-        <div class="module-content box">
-        </div>
-      </div> -->
       <div class="span12 col1">
         <div class="module-content box">
           <h1 class="browse-heading">Browse by Topic</h1>
@@ -87,7 +77,6 @@ dropdown in the settings page and rename this file layout4.html.
               {% endfor %}
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -113,6 +102,8 @@ dropdown in the settings page and rename this file layout4.html.
       <div class="span6 col2">
         <div class="module-content box">
           <h2 class="secondary-heading">Tweets</h2>
+          <a class="twitter-timeline"  height="420" data-chrome="nofooter noscrollbar  noheader transparent" href="https://twitter.com/opendataphilly" data-widget-id="547080711753449472">Tweets by @opendataphilly</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </div>
       </div>
     </div>

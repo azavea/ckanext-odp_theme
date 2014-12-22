@@ -16,28 +16,34 @@
 .carousel-inner > .item.active.in {
   opacity: 1;
   display: block;
+  z-index: 250;
 }
 
-/* line 18, sass/partials/_carousel.scss */
+/* line 19, sass/partials/_carousel.scss */
 .carousel-control {
   position: static;
   border: 0;
   background-color: transparent;
   opacity: 1;
 }
-/* line 23, sass/partials/_carousel.scss */
+/* line 24, sass/partials/_carousel.scss */
 .carousel-control:hover {
   opacity: .6;
 }
-/* line 26, sass/partials/_carousel.scss */
+/* line 27, sass/partials/_carousel.scss */
 .carousel-control > img {
   height: 16px;
 }
 
-/* line 31, sass/partials/_carousel.scss */
+/* line 32, sass/partials/_carousel.scss */
+.carousel {
+  line-height: inherit;
+}
+
+/* line 36, sass/partials/_carousel.scss */
 .carousel-controls {
   bottom: 0;
-  line-height: 20px;
+  line-height: 30px;
   font-size: 26px;
   font-weight: bold;
   position: absolute;
@@ -48,7 +54,7 @@
   right: 0;
 }
 
-/* line 44, sass/partials/_carousel.scss */
+/* line 49, sass/partials/_carousel.scss */
 .vizcarousel-desc {
   text-align: center;
   background-color: #20c3c4;
@@ -56,21 +62,30 @@
   opacity: 0;
   transition: opacity 400ms;
   padding: 30px 10px;
-  text-align: center;
-  width: 100%;
+  text-align: left;
+  width: 350px;
   height: 100%;
-  padding-top: 140px;
+  padding: 120px 50px;
 }
-/* line 55, sass/partials/_carousel.scss */
-.vizcarousel-desc > p > a, .vizcarousel-desc > p, .vizcarousel-desc > .vizcarousel-desc-text {
+/* line 60, sass/partials/_carousel.scss */
+.vizcarousel-desc > p > a, .vizcarousel-desc > p {
   color: #fff;
 }
-/* line 58, sass/partials/_carousel.scss */
+/* line 63, sass/partials/_carousel.scss */
 .vizcarousel-desc.active {
   opacity: 1;
 }
 
-/* line 63, sass/partials/_carousel.scss */
+/* line 68, sass/partials/_carousel.scss */
+.vizcarousel-desc-text {
+  color: #fff;
+}
+/* line 70, sass/partials/_carousel.scss */
+.vizcarousel-desc-text.author {
+  font-style: italic;
+}
+
+/* line 75, sass/partials/_carousel.scss */
 .item {
   width: 450px;
   height: 450px;
@@ -93,7 +108,7 @@ body {
   -ms-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
   text-rendering: geometricPrecision;
-  font-family: "Colfax";
+  font-family: "Lato", sans-serif;
   color: #444849;
   line-height: 1.5;
 }
@@ -158,7 +173,7 @@ a {
 
 /* line 67, sass/main.scss */
 input, textarea, select {
-  font-family: "Colfax";
+  font-family: "Lato", sans-serif;
 }
 
 /* line 72, sass/main.scss */
@@ -433,58 +448,66 @@ label {
   background-color: #6e7a81;
 }
 /* line 297, sass/main.scss */
+.main-featured .truncator-more {
+  display: none;
+}
+/* line 300, sass/main.scss */
+.main-featured .media-item.is-expander:hover {
+  padding-bottom: 0;
+}
+/* line 303, sass/main.scss */
 .main-featured .module-content, .main-featured .media-grid {
   background-color: transparent;
   border: 0;
 }
 
-/* line 303, sass/main.scss */
+/* line 309, sass/main.scss */
 .main-search {
   padding-top: 34px !important;
 }
 
-/* line 307, sass/main.scss */
+/* line 313, sass/main.scss */
 .dataset-heading a {
   color: #31383c;
 }
 
-/* line 311, sass/main.scss */
+/* line 317, sass/main.scss */
 .context-info h1.heading {
   font-size: 17.5px !important;
 }
 
-/* line 315, sass/main.scss */
+/* line 321, sass/main.scss */
 .hero-text {
   color: #fff;
 }
 
-/* line 319, sass/main.scss */
+/* line 325, sass/main.scss */
 .hero-text-heading {
   font-size: 44px;
 }
 
-/* line 323, sass/main.scss */
+/* line 329, sass/main.scss */
 .hero-text-description {
   font-size: 17.5px;
 }
 
-/* line 327, sass/main.scss */
+/* line 333, sass/main.scss */
 .featured-heading {
   color: #fff;
 }
 
-/* line 331, sass/main.scss */
+/* line 337, sass/main.scss */
 .secondary-heading {
   font-weight: normal;
   color: #6e7a81;
   margin-bottom: 26px;
 }
 
-/* line 337, sass/main.scss */
+/* line 343, sass/main.scss */
 .spinner {
   width: 40px;
   height: 40px;
-  margin: 100px auto;
+  margin: 110px 205px;
   background-color: #fff;
   position: absolute;
   left: 0;
@@ -497,12 +520,12 @@ label {
 }
 
 @-webkit-keyframes scaleout {
-  /* line 353, sass/main.scss */
+  /* line 359, sass/main.scss */
   0% {
     -webkit-transform: scale(0);
   }
 
-  /* line 354, sass/main.scss */
+  /* line 360, sass/main.scss */
   100% {
     -webkit-transform: scale(1);
     opacity: 0;
@@ -510,13 +533,13 @@ label {
 }
 
 @keyframes scaleout {
-  /* line 361, sass/main.scss */
+  /* line 367, sass/main.scss */
   0% {
     transform: scale(0);
     -webkit-transform: scale(0);
   }
 
-  /* line 364, sass/main.scss */
+  /* line 370, sass/main.scss */
   100% {
     transform: scale(1);
     -webkit-transform: scale(1);
@@ -524,7 +547,7 @@ label {
   }
 }
 
-/* line 371, sass/main.scss */
+/* line 377, sass/main.scss */
 .outer {
   overflow: hidden;
   position: relative;
@@ -533,33 +556,39 @@ label {
   margin-top: 20px;
 }
 
-/* line 379, sass/main.scss */
+/* line 385, sass/main.scss */
 .inner {
   position: absolute;
   height: 100px;
   width: 100%;
 }
 
-/* line 385, sass/main.scss */
+/* line 391, sass/main.scss */
 .media-view > .banner {
   display: none;
 }
 
-/* line 389, sass/main.scss */
+/* line 395, sass/main.scss */
 .dataset-item {
   border-bottom: 1px solid #dddddd;
 }
 
-/* line 393, sass/main.scss */
+/* line 399, sass/main.scss */
 .main-updates .module-content {
   background-color: transparent;
 }
 
-/* line 397, sass/main.scss */
+/* line 403, sass/main.scss */
 .media-item {
   transition: background-color 400ms;
 }
-/* line 399, sass/main.scss */
+/* line 405, sass/main.scss */
 .media-item:hover {
   background-color: #eee;
+}
+
+/* line 411, sass/main.scss */
+.site-footer ul {
+  padding: 0;
+  list-style: none;
 }

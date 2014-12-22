@@ -294,6 +294,12 @@ label {
 
 .main-featured {
   background-color: $tertiary-color;
+  .truncator-more {
+    display: none;
+  }
+  .media-item.is-expander:hover {
+    padding-bottom: 0;
+  }
   .module-content, .media-grid {
     background-color: transparent;
     border: 0;
@@ -337,7 +343,7 @@ label {
 .spinner {
   width: 40px;
   height: 40px;
-  margin: 100px auto;
+  margin: 110px 205px;
   background-color: #fff;
   position: absolute;
   left: 0;
@@ -398,5 +404,12 @@ label {
   transition: background-color 400ms;
   &:hover {
     background-color: #eee;
+  }
+}
+
+.site-footer {
+  ul {
+    padding: 0;
+    list-style: none;
   }
 }

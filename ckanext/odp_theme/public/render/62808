@@ -1,1 +1,6 @@
-<img src="/img/odp-viz-2.png">
+<div class="vizcarousel-desc">
+  <h1 class="vizcarousel-desc-text">Mapping Residential Burglaries in Philadelphia</h1>
+  <p class="vizcarousel-desc-text author">by Rachel Weeden</p>
+  <p class="vizcarousel-desc-text">Built using <a href="#">Philadelphia Police Part One Crime Incidents</a>.</p>
+</div>
+<img src="/img/odp-viz-2.png" srcset="/img/odp-viz-2@2x.png 2x">

@@ -19,9 +19,9 @@
 		<sliceSourceBounds  width="1387.212" height="339.173" bottomLeftOrigin="true" y="-586" x="-147"></sliceSourceBounds>
 	</sfw>
 </metadata>
-<path fill="#00B3D7" d="M20.562,0H0v42h32.354V12.239L20.562,0z M21.115,5.479l5.554,5.765h-5.554V5.479z M28.949,38.599H3.404
+<path fill="#20c3c4" d="M20.562,0H0v42h32.354V12.239L20.562,0z M21.115,5.479l5.554,5.765h-5.554V5.479z M28.949,38.599H3.404
 	V3.406h15.156v10.392h10.388L28.949,38.599L28.949,38.599z"/>
-<rect x="7.038" y="15.729" fill="#00B3D7" width="18.282" height="1.705"/>
-<rect x="7.038" y="22.794" fill="#00B3D7" width="18.282" height="1.7"/>
-<rect x="7.038" y="29.859" fill="#00B3D7" width="18.282" height="1.701"/>
+<rect x="7.038" y="15.729" fill="#20c3c4" width="18.282" height="1.705"/>
+<rect x="7.038" y="22.794" fill="#20c3c4" width="18.282" height="1.7"/>
+<rect x="7.038" y="29.859" fill="#20c3c4" width="18.282" height="1.701"/>
 </svg>

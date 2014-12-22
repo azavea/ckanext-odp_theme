@@ -12,6 +12,7 @@
   & > .item.active.in {
     opacity: 1;
     display: block;
+    z-index: 250;
   }
 }
 
@@ -28,9 +29,13 @@
   }
 }
 
+.carousel {
+  line-height: inherit;
+}
+
 .carousel-controls {
   bottom: 0;
-  line-height: 20px;
+  line-height: 30px;
   font-size: 26px;
   font-weight: bold;
   position: absolute;
@@ -48,15 +53,22 @@
   opacity: 0;
   transition: opacity 400ms;
   padding: 30px 10px;
-  text-align: center;
-  width: 100%;
+  text-align: left;
+  width: 350px;
   height: 100%;
-  padding-top: 140px;
-  & > p > a, & > p , & > .vizcarousel-desc-text {
+  padding: 120px 50px;
+  & > p > a, & > p {
     color: #fff;
   }
   &.active {
     opacity: 1;
+  }
+}
+
+.vizcarousel-desc-text {
+  color: #fff;
+  &.author {
+    font-style: italic;
   }
 }
 
