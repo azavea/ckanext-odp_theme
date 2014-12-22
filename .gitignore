@@ -29,6 +29,7 @@ nosetests.xml
 
 # sass
 .sass-cache
+ckanext/odp_theme/public/css/main.css
 
 # Editor crap
 *.swp
