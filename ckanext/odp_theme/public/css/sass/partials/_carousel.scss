@@ -1,0 +1,73 @@
+.carousel-inner {
+  overflow: visible;
+  opacity: 1;
+  width: 450px;
+  height: 450px;
+  & > .item {
+    position: absolute;
+    opacity: 0;
+    display: block;
+    transition: all 400ms;
+  }
+  & > .item.active.in {
+    opacity: 1;
+    display: block;
+  }
+}
+
+.carousel-control {
+  position: static;
+  border: 0;
+  background-color: transparent;
+  opacity: 1;
+  &:hover {
+    opacity: .6;
+  }
+  > img {
+    height: 16px;
+  }
+}
+
+.carousel-controls {
+  bottom: 0;
+  line-height: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  position: absolute;
+  background-color: $secondary-color;
+  z-index: 300;
+  padding: 0 10px;
+  color: #fff;
+  right: 0;
+}
+
+.vizcarousel-desc {
+  text-align: center;
+  background-color: $secondary-color;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 400ms;
+  padding: 30px 10px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 140px;
+  & > p > a, & > p , & > .vizcarousel-desc-text {
+    color: #fff;
+  }
+  &.active {
+    opacity: 1;
+  }
+}
+
+.item {
+  width: 450px;
+  height: 450px;
+  z-index: 200;
+  transition: all 400ms;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+}

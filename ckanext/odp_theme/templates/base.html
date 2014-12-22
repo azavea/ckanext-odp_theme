@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="/css/main.css" />
+  {% resource 'odp_theme/favorite.js' %}
+
+{% endblock %}
