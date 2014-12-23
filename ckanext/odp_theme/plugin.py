@@ -6,6 +6,9 @@ import pylons
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
+from ckan.lib.activity_streams import \
+    activity_stream_string_functions as activity_streams
+
 
 def most_recent_datasets(num=3):
     """Return a list of recent datasets."""
@@ -37,6 +40,20 @@ def groups():
     """Return a list of groups"""
 
     return tk.get_action('group_list')({}, {'all_fields': True})
+
+
+# monkeypatch activity streams
+activity_streams['changed group'] = (
+    lambda c, a: tk._("{actor} updated the topic {group}")
+)
+
+activity_streams['deleted group'] = (
+    lambda c, a: tk._("{actor} deleted the topic {group}")
+)
+
+activity_streams['new group'] = (
+    lambda c, a: tk._("{actor} created the topic {group}")
+)
 
 
 class ODPSearchPlugin(plugins.SingletonPlugin):
