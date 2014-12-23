@@ -7,7 +7,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
 
-def most_recent_datasets():
+def most_recent_datasets(num=3):
     """Return a list of recent datasets."""
 
     # the current_package_list_with_resources action returns private resources
@@ -15,7 +15,7 @@ def most_recent_datasets():
     datasets = tk.get_action('current_package_list_with_resources')({},
                              {'limit': 100})
 
-    return filter(lambda ds: not ds['private'], datasets)[:10]
+    return filter(lambda ds: not ds['private'], datasets)[:num]
 
 
 def apps(featured_only=True):
