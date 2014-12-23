@@ -69,7 +69,7 @@ dropdown in the settings page and rename this file layout4.html.
           <div>
               {% for topic in h.odp_theme_groups() %}
                 <a href="/group/{{ topic.name }}" class="browse-topic">
-                  <img class="browse-topic-image" src="{% if topic.image_display_url != '' %} {{ topic.image_display_url }} {% else %} {{'/img/icons-document.svg'}} {% endif %}">
+                    <img class="browse-topic-image" src="{{ topic.image_display_url or '/img/icons-document.svg' }}">
                   <div class="browse-topic-title">
                     {{ topic.display_name }}
                   </div>
