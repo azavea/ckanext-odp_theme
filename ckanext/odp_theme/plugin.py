@@ -101,13 +101,19 @@ class ODPThemePlugin(ODPSearchPlugin):
         new_facets_dict['published'] = tk._('Published')
         for key, value in facets_dict.items():
             new_facets_dict[key] = value
+        if 'groups' in new_facets_dict:
+            new_facets_dict['groups'] = tk._('Topics')
         return new_facets_dict
 
     def group_facets(self, facets_dict, group_type, package_type):
+        if 'groups' in facets_dict:
+            facets_dict['groups'] = tk._('Topics')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type,
                             package_type):
+        if 'groups' in facets_dict:
+            facets_dict['groups'] = tk._('Topics')
         return facets_dict
 
     def update_config(self, config):
