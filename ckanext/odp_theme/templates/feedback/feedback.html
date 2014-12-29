@@ -1,0 +1,68 @@
+{% extends "package/read_base.html" %}
+{% import 'macros/form.html' as form %}
+
+{% set pkg = c.pkg_dict %}
+{% set user_feedback = c.user_feedback %}
+
+{% block primary_content_inner %}
+
+{% if user_feedback %}
+{% resource 'odp_theme/feedbackform.js' %}
+<form method="post">
+    <h2>State the benefits of releasing this dataset as open data</h2>
+    {{ form.checkbox('checkbox-economic', id='checkbox-economic',
+                     label='Economic growth',
+                     checked=user_feedback.economic_comment is not none, value=1) }}
+    <div id="text-economic">
+        {{ form.textarea('economic', id='textfield-economic',
+                         label='Comment', value=user_feedback.economic_comment) }}
+    </div>
+
+    {{ form.checkbox('checkbox-social', id='checkbox-social',
+                     label='Social growth',
+                     checked=user_feedback.social_comment is not none, value=1) }}
+
+    <div id="text-social">
+        {{ form.textarea('social', id='textfield-social',
+                         label='Comment', value=user_feedback.social_comment) }}
+    </div>
+
+    {{ form.checkbox('checkbox-public-service', id='checkbox-public-service',
+                     label='Effective Public Services',
+                     checked=user_feedback.public_service_comment is not none, value=1) }}
+
+    <div id="text-public-service">
+        {{ form.textarea('public-service', id='textfield-public-service',
+                         label='Comment', value=user_feedback.public_service_comment) }}
+    </div>
+
+    {{ form.checkbox('checkbox-other', id='checkbox-other',
+                     label='Other Benefits',
+                     checked=user_feedback.other_comment is not none, value=1) }}
+
+    <div id="text-other">
+        {{ form.textarea('other', id='textfield-other',
+                         label='Comment', value=user_feedback.other_comment) }}
+    </div>
+
+    <button class="btn btn-primary" name="save" value="save" type="submit">{{ _('Save') }}</button>
+</form>
+{% endif %}
+
+
+{% for feedback in c.pkg_feedback %}
+  <div class="unpublishedfeedback well">
+    {{ h.linked_user(feedback.user) }}
+    {% for text, att in [('Economic growth','economic_comment'),
+                         ('Social growth', 'social_comment'),
+                         ('Effective public services', 'public_service_comment'),
+                         ('Other benefits', 'other_comment')] %}
+      {% if feedback[att] is not none %}
+          <h3>{{ text }}</h3>
+          <p>{{ feedback[att]|e|replace('\n', '<br />'|safe) }}</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endfor %}
+
+{% endblock %}
