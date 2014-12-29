@@ -23,7 +23,7 @@ class UnpublishedFeedback(model.DomainObject):
         """Get all feedback for a given package"""
 
         query = model.Session.query(cls).autoflush(False)
-        return query.filter_by(dataset=package)
+        return query.filter_by(dataset=package).order_by(cls.modified.desc())
 
     @classmethod
     def count_for_package(cls, package):
