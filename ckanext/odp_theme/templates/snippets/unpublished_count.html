@@ -1,0 +1,13 @@
+{% set unpub_count = h.unpublished_count(package) %}
+
+<i class="icon-money"></i>
+{{ unpub_count.economic }}
+
+<i class="icon-user"></i>
+{{ unpub_count.social }}
+
+<i class="icon-thumbs-up"></i>
+{{ unpub_count.public_service }}
+
+<i class="icon-question"></i>
+{{ unpub_count.other }}

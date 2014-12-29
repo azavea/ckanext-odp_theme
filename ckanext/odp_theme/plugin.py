@@ -9,6 +9,8 @@ import ckan.plugins.toolkit as tk
 from ckan.lib.activity_streams import \
     activity_stream_string_functions as activity_streams
 
+from feedback_model import init_db, UnpublishedFeedback
+
 
 def most_recent_datasets(num=3):
     """Return a list of recent datasets."""
@@ -106,10 +108,9 @@ class ODPThemePlugin(ODPSearchPlugin):
     """
 
     plugins.implements(plugins.IConfigurer)
-
     plugins.implements(plugins.ITemplateHelpers)
-
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.IRoutes)
 
     def dataset_facets(self, facets_dict, package_type):
         """Add Published to the list of facets shown on the search page"""
@@ -143,6 +144,7 @@ class ODPThemePlugin(ODPSearchPlugin):
         # see http://docs.ckan.org/en/latest/theming/fanstatic.html
         tk.add_public_directory(config, 'public')
         tk.add_resource('fanstatic', 'odp_theme')
+        init_db()
 
     def get_helpers(self):
         """Register odp_theme_* helper functions"""
@@ -150,4 +152,15 @@ class ODPThemePlugin(ODPSearchPlugin):
         return {'odp_theme_most_recent_datasets': most_recent_datasets,
                 'odp_theme_dataset_count': dataset_count,
                 'odp_theme_groups': groups,
-                'odp_theme_apps': apps}
+                'odp_theme_apps': apps,
+                'unpublished_count': UnpublishedFeedback.count_for_package}
+
+    def before_map(self, map):
+        return map
+
+    def after_map(self, map):
+        controller = 'ckanext.odp_theme.controller:UnpublishedFeedbackController'
+
+        map.connect('view_feedback', '/dataset/{id}/feedback', action='view_feedback',
+                    controller=controller)
+        return map

@@ -1,0 +1,20 @@
+{% ckan_extends %}
+{% block package_notes %}
+  {% if c.pkg_notes_formatted %}
+    <div class="notes embedded-content">
+      {{ c.pkg_notes_formatted }}
+    </div>
+  {% endif %}
+
+{% if not c.pkg.resources and c.pkg.extras.published == 'false' %}
+  <div>
+    {% snippet 'snippets/unpublished_count.html', package=c.pkg.id %}
+  </div>
+  <div>
+    <a href="/dataset/{{ c.pkg.name }}/feedback">
+      View or add feedback about this unpublished dataset
+    </a>
+  </div>
+{% endif %}
+
+{% endblock %}
