@@ -1,5 +1,4 @@
 @import "partials/_variables";
-@import "partials/_overrides";
 @import "partials/_carousel";
 
 body {
@@ -42,7 +41,7 @@ h5 {
 }
 
 a {
-  color: $primary-color;
+  color: $secondary-color;
 }
 
 .resource-item .heading {
@@ -51,6 +50,10 @@ a {
 
 .dataset-heading {
   font-size: $heading-size-h3;
+}
+
+.browse-topic-title {
+  color: $primary-color;
 }
 
 .box, .wrapper, .btn, .label, .media-view:hover, .media-view.hovered, .media-view {
