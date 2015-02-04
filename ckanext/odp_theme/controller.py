@@ -62,4 +62,6 @@ class UnpublishedFeedbackController(p.toolkit.BaseController):
         except tk.ObjectNotFound:
             tk.abort(404, tk._('Dataset not found'))
 
-        return tk.render('feedback/feedback.html')
+        #return tk.render('feedback/feedback.html')
+        return tk.redirect_to(controller='package', action='read',
+                              id=c.pkg.name)

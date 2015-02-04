@@ -11,10 +11,13 @@
     {% snippet 'snippets/unpublished_count.html', package=c.pkg.id %}
   </div>
   <div>
-    <a href="/dataset/{{ c.pkg.name }}/feedback">
-      View or add feedback about this unpublished dataset
-    </a>
+    {% snippet 'feedback/feedback-snippet.html', pkg_feedback=h.feedback_for_pkg(c.pkg.id),
+                                                 user_feedback=h.user_feedback(c.pkg.id, c.userobj.id),
+                                                 pkg_id=c.pkg.name %}
   </div>
 {% endif %}
 
 {% endblock %}
+
+{% block package_resources %}{% if c.pkg.extras.published != 'false' %}{{ super() }}{% endif %}{% endblock %}
+{% block package_additional_info %}{% if c.pkg.extras.published != 'false' %}{{ super() }}{% endif %}{% endblock %}
