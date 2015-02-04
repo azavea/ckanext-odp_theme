@@ -44,6 +44,20 @@ def groups():
     return tk.get_action('group_list')({}, {'all_fields': True})
 
 
+def user_feedback(pkgid, userid):
+    """Return user feedback for a dataset"""
+
+    feedback = UnpublishedFeedback.get(dataset=pkgid, user=userid)
+    if feedback is None:
+        feedback = UnpublishedFeedback()
+    return feedback
+
+def feedback_for_pkg(pkgid):
+    """Return all feedback for a dataset"""
+
+    return UnpublishedFeedback.get_for_package(pkgid).all()
+
+
 # monkeypatch activity streams
 activity_streams['changed group'] = (
     lambda c, a: tk._("{actor} updated the topic {group}")
@@ -153,7 +167,9 @@ class ODPThemePlugin(ODPSearchPlugin):
                 'odp_theme_dataset_count': dataset_count,
                 'odp_theme_groups': groups,
                 'odp_theme_apps': apps,
-                'unpublished_count': UnpublishedFeedback.count_for_package}
+                'unpublished_count': UnpublishedFeedback.count_for_package,
+                'user_feedback': user_feedback,
+                'feedback_for_pkg': feedback_for_pkg}
 
     def before_map(self, map):
         return map
