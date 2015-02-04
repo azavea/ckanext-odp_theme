@@ -1,6 +1,8 @@
 setup.py
 ckanext/__init__.py
 ckanext/odp_theme/__init__.py
+ckanext/odp_theme/controller.py
+ckanext/odp_theme/feedback_model.py
 ckanext/odp_theme/plugin.py
 ckanext_odp_theme.egg-info/PKG-INFO
 ckanext_odp_theme.egg-info/SOURCES.txt
