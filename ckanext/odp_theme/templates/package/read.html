@@ -21,3 +21,4 @@
 
 {% block package_resources %}{% if c.pkg.extras.published != 'false' %}{{ super() }}{% endif %}{% endblock %}
 {% block package_additional_info %}{% if c.pkg.extras.published != 'false' %}{{ super() }}{% endif %}{% endblock %}
+{% block disqus_comments %}{% if c.pkg.extras.published != 'false' %}{{ super() }}{% endif %}{% endblock %}
