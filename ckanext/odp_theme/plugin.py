@@ -3,6 +3,8 @@ from collections import OrderedDict
 
 import pylons
 
+from jinja2 import Undefined
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
@@ -10,7 +12,6 @@ from ckan.lib.activity_streams import \
     activity_stream_string_functions as activity_streams
 
 from feedback_model import init_db, UnpublishedFeedback
-
 
 def most_recent_datasets(num=3):
     """Return a list of recent datasets."""
@@ -47,10 +48,13 @@ def groups():
 def user_feedback(pkgid, userid):
     """Return user feedback for a dataset"""
 
+    if isinstance(userid, Undefined):
+        return None
     feedback = UnpublishedFeedback.get(dataset=pkgid, user=userid)
     if feedback is None:
         feedback = UnpublishedFeedback()
     return feedback
+
 
 def feedback_for_pkg(pkgid):
     """Return all feedback for a dataset"""
