@@ -1,4 +1,20 @@
 {% ckan_extends %}
+
+{% block primary_content_inner %}
+
+{% if not c.pkg.resources and c.pkg.extras.published == 'false' %}
+
+<div class="alert alert-error">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Note:</strong> This data hasn't been published yet. <a href="#why-publish">Let us know</a> why you think it would be useful.
+</div>
+
+{% endif %}
+
+{{ super() }}
+
+{% endblock %}
+
 {% block package_notes %}
   {% if c.pkg_notes_formatted %}
     <div class="notes embedded-content">
@@ -8,13 +24,12 @@
 
 {% if not c.pkg.resources and c.pkg.extras.published == 'false' %}
   <div>
-    {% snippet 'snippets/unpublished_count.html', package=c.pkg.id %}
-  </div>
-  <div>
     {% snippet 'feedback/feedback-snippet.html', pkg_feedback=h.feedback_for_pkg(c.pkg.id),
                                                  user_feedback=h.user_feedback(c.pkg.id, c.userobj.id),
-                                                 pkg_id=c.pkg.name %}
+                                                 pkg_id=c.pkg.name,
+                                                 pkg_id_id=c.pkg.id %}
   </div>
+  <hr>
 {% endif %}
 
 {% endblock %}
