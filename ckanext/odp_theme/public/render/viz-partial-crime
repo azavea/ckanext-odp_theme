@@ -1,6 +1,6 @@
 <div class="vizcarousel-desc">
   <h1 class="vizcarousel-desc-text">PHL Crime Map</h1>
   <p class="vizcarousel-desc-text author">by Dave Walk</p>
-  <p class="vizcarousel-desc-text">Built using <a href="#">Philadelphia Police Part One Crime Incidents</a>.</p>
+  <p class="vizcarousel-desc-text">Built using <a href="/dataset/philadelphia-police-part-one-crime-incidents">Philadelphia Police Part One Crime Incidents</a>.</p>
 </div>
 <img src="/img/odp-viz-1.png" srcset="/img/odp-viz-1@2x.png 2x">
