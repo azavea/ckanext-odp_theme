@@ -1,49 +1,65 @@
 {% if user_feedback %}
 {% resource 'odp_theme/feedbackform.js' %}
+
 {% import 'macros/form.html' as form %}
-<form method="post" action="{{ h.url_for('view_feedback', id=pkg_id) }}">
-    <h2>State the benefits of releasing this dataset as open data</h2>
-    {{ form.checkbox('checkbox-economic', id='checkbox-economic',
-                     label='Economic growth',
-                     checked=user_feedback.economic_comment is not none, value=1) }}
-    <div id="text-economic">
-        {{ form.textarea('economic', id='textfield-economic',
-                         label='Comment', value=user_feedback.economic_comment) }}
-    </div>
 
-    {{ form.checkbox('checkbox-social', id='checkbox-social',
-                     label='Social growth',
-                     checked=user_feedback.social_comment is not none, value=1) }}
+<div class="well unpublishfeedback">
+    <form method="post" action="{{ h.url_for('view_feedback', id=pkg_id) }}">
+        <h3 id="why-publish">Why do you think we should publish this data?</h3>
+        {{ form.checkbox('checkbox-economic', id='checkbox-economic',
+                         label='Economic growth',
+                         checked=user_feedback.economic_comment is not none, value=1) }}
+        <div id="text-economic">
+            {{ form.textarea('economic', id='textfield-economic',
+                             label='(Optional) This data will impact economic growth because', value=user_feedback.economic_comment) }}
+        </div>
 
-    <div id="text-social">
-        {{ form.textarea('social', id='textfield-social',
-                         label='Comment', value=user_feedback.social_comment) }}
-    </div>
+        {{ form.checkbox('checkbox-social', id='checkbox-social',
+                         label='Social growth',
+                         checked=user_feedback.social_comment is not none, value=1) }}
 
-    {{ form.checkbox('checkbox-public-service', id='checkbox-public-service',
-                     label='Effective Public Services',
-                     checked=user_feedback.public_service_comment is not none, value=1) }}
+        <div id="text-social">
+            {{ form.textarea('social', id='textfield-social',
+                             label='(Optional) This data will impact social growth because', value=user_feedback.social_comment) }}
+        </div>
 
-    <div id="text-public-service">
-        {{ form.textarea('public-service', id='textfield-public-service',
-                         label='Comment', value=user_feedback.public_service_comment) }}
-    </div>
+        {{ form.checkbox('checkbox-public-service', id='checkbox-public-service',
+                         label='Effective Public Services',
+                         checked=user_feedback.public_service_comment is not none, value=1) }}
 
-    {{ form.checkbox('checkbox-other', id='checkbox-other',
-                     label='Other Benefits',
-                     checked=user_feedback.other_comment is not none, value=1) }}
+        <div id="text-public-service">
+            {{ form.textarea('public-service', id='textfield-public-service',
+                             label='(Optional) This data will impact effective public services because', value=user_feedback.public_service_comment) }}
+        </div>
 
-    <div id="text-other">
-        {{ form.textarea('other', id='textfield-other',
-                         label='Comment', value=user_feedback.other_comment) }}
-    </div>
+        {{ form.checkbox('checkbox-other', id='checkbox-other',
+                         label='Other Benefits',
+                         checked=user_feedback.other_comment is not none, value=1) }}
 
-    <button class="btn btn-primary" name="save" value="save" type="submit">{{ _('Save') }}</button>
-</form>
+        <div id="text-other">
+            {{ form.textarea('other', id='textfield-other',
+                             label='(Optional) This data will have other benefits because', value=user_feedback.other_comment) }}
+        </div>
+
+        <button class="btn btn-primary" name="save" value="Submit" type="submit">{{ _('Save') }}</button>
+    </form>
+</div>
+
+{% else %}
+
+<div class="well unpublishfeedback">
+    <h3 id="why-publish">Why do you think we should publish this data?</h3>
+    <a href="/user/login" class="btn btn-primary" name="save" value="Submit" type="submit">{{ _('Login to Respond') }}</a href="/">
+</div>
+
+
 {% endif %}
 
-
 {% for feedback in pkg_feedback %}
+    <hr>
+    <h3>Feedback</h3>
+        {% snippet 'snippets/unpublished_count.html', package=pkg_id_id %}
+
   <div class="unpublishedfeedback well">
     {{ h.linked_user(feedback.user) }}
     {% for text, att in [('Economic growth','economic_comment'),
@@ -51,7 +67,7 @@
                          ('Effective public services', 'public_service_comment'),
                          ('Other benefits', 'other_comment')] %}
       {% if feedback[att] is not none %}
-          <h3>{{ text }}</h3>
+          <h4>{{ text }}</h4>
           <p>{{ feedback[att]|e|replace('\n', '<br />'|safe) }}</p>
       {% endif %}
     {% endfor %}

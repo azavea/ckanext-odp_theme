@@ -1,13 +1,22 @@
 {% set unpub_count = h.unpublished_count(package) %}
 
-<i class="icon-money"></i>
-{{ unpub_count.economic }}
-
-<i class="icon-user"></i>
-{{ unpub_count.social }}
-
-<i class="icon-thumbs-up"></i>
-{{ unpub_count.public_service }}
-
-<i class="icon-question"></i>
-{{ unpub_count.other }}
+<div class="feedback-icons">
+  <div class="row">
+    <div class="span2 text-center">
+      <div class="feedback-count">{{ unpub_count.economic }}</div>
+      Economic Growth
+    </div>
+    <div class="span2 text-center">
+      <div class="feedback-count">{{ unpub_count.social }}</div>
+      Social Growth
+    </div>
+    <div class="span2 text-center">
+      <div class="feedback-count">{{ unpub_count.public_service }}</div>
+      </i> Effective Public Services
+    </div>
+    <div class="span2 text-center">
+      <div class="feedback-count">{{ unpub_count.other }}</div>
+      Other Benefits
+    </div>
+  </div>
+</div>
