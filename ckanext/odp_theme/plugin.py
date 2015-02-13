@@ -179,8 +179,11 @@ class ODPThemePlugin(ODPSearchPlugin):
         return map
 
     def after_map(self, map):
-        controller = 'ckanext.odp_theme.controller:UnpublishedFeedbackController'
+        unpublished_feedback_controller = 'ckanext.odp_theme.controller:UnpublishedFeedbackController'
+        unpublished_report_controller = 'ckanext.odp_theme.controller:UnpublishedReportController'
 
         map.connect('view_feedback', '/dataset/{id}/feedback', action='view_feedback',
-                    controller=controller)
+                    controller=unpublished_feedback_controller)
+        map.connect('view_org', '/unpublished_report/{org_id}', action='view_org',
+                    controller=unpublished_report_controller)
         return map
