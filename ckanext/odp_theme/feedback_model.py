@@ -27,37 +27,23 @@ class UnpublishedFeedback(model.DomainObject):
 
     @classmethod
     def count_for_package(cls, package):
-        """Produce a dict summing votes for different incentives to release
-           a dataset"""
+        """Produce a sum of votes for unpublished datasets"""
 
         result = {}
         query = model.Session.query(cls).autoflush(False).filter(
             cls.dataset == package
         )
-        cols = {
-            'economic': cls.economic_comment,
-            'social': cls.social_comment,
-            'public_service': cls.public_service_comment,
-            'other': cls.other_comment
-        }
-        for key, col in cols.iteritems():
-            result[key] = query.filter(col != None).count()
-        return result
+        return query.count()
 
 
 def init_db():  # inspired by db.py from ckanext-pages
 
     unpublished_feedback_table = sqlalchemy.Table(
-        'ckanext_unpublished_feedback', model.meta.metadata,
+        'ckanext_unpublished_comments', model.meta.metadata,
         sqlalchemy.Column('id', types.Integer, primary_key=True),
         sqlalchemy.Column('user', types.String),
         sqlalchemy.Column('dataset', types.String),
-        sqlalchemy.Column('economic_comment', types.Text),
-        sqlalchemy.Column('social_comment', types.Text),
-        sqlalchemy.Column('public_service_comment', types.Text),
-        sqlalchemy.Column('other_comment', types.Text),
-        sqlalchemy.Column('reponding_for_org', types.Boolean),
-        sqlalchemy.Column('future_contact', types.Boolean),
+        sqlalchemy.Column('comments', types.Text),
         sqlalchemy.Column('modified', types.DateTime,
                           default=datetime.datetime.utcnow)
     )

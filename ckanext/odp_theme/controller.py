@@ -33,20 +33,10 @@ class UnpublishedFeedbackController(p.toolkit.BaseController):
                     c.user_feedback.user = c.userobj.id
             if tk.request.method == 'POST':  # INSERT/UPDATE/DELETE
                 data = tk.request.POST
-                comment_fields = [('economic', 'economic_comment'),
-                                  ('social', 'social_comment'),
-                                  ('public-service', 'public_service_comment'),
-                                  ('other', 'other_comment')]
                 empty = True
-                for form_name, db_name in comment_fields:
-                    checkbox = 'checkbox-{}'.format(form_name)
-                    if checkbox in data and data[checkbox]:
-                        empty = False
-                        if form_name not in data:
-                            data[form_name] = ''
-                        setattr(c.user_feedback, db_name, data[form_name])
-                    else:
-                        setattr(c.user_feedback, db_name, None)
+                if 'comment' in data and data['comment'].strip() != '':
+                    empty = False
+                    setattr(c.user_feedback, 'comments', data['comment'])
                 session = context['session']
                 if not empty:
                     c.user_feedback.modified = datetime.datetime.utcnow()
