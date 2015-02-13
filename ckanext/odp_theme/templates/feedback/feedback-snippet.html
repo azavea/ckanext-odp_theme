@@ -24,14 +24,18 @@
 
 
 {% endif %}
-
-{% for feedback in pkg_feedback %}
     <hr>
-    <h3>Feedback</h3>
-        {% snippet 'snippets/unpublished_count.html', package=pkg_id_id %}
-
+    <h3>Feedback ({{ h.unpublished_count(pkg_id_id) }})</h3>
+{% for feedback in pkg_feedback %}
   <div class="unpublishedfeedback well">
     {{ h.linked_user(feedback.user) }}
+
       <p>{{ feedback.comments|e|replace('\n', '<br />'|safe) }}</p>
+    {% if sysadmin %}
+        <form action="{{ h.url_for('view_feedback', id=pkg_id) }}" method="post">
+            <input type="submit" class="btn btn-primary" name="delete" value="Remove" />
+            <input type="hidden" name="id" value="{{ feedback.id }}" />
+        </form>
+    {% endif %}
   </div>
 {% endfor %}

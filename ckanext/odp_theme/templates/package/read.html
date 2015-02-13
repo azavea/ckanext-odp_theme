@@ -27,7 +27,8 @@
     {% snippet 'feedback/feedback-snippet.html', pkg_feedback=h.feedback_for_pkg(c.pkg.id),
                                                  user_feedback=h.user_feedback(c.pkg.id, c.userobj.id),
                                                  pkg_id=c.pkg.name,
-                                                 pkg_id_id=c.pkg.id %}
+                                                 pkg_id_id=c.pkg.id,
+                                                 sysadmin=c.userobj.sysadmin %}
   </div>
   <hr>
 {% endif %}
