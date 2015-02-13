@@ -3,20 +3,8 @@
 <div class="feedback-icons">
   <div class="row">
     <div class="span2 text-center">
-      <div class="feedback-count">{{ unpub_count.economic }}</div>
-      Economic Growth
-    </div>
-    <div class="span2 text-center">
-      <div class="feedback-count">{{ unpub_count.social }}</div>
-      Social Growth
-    </div>
-    <div class="span2 text-center">
-      <div class="feedback-count">{{ unpub_count.public_service }}</div>
-      </i> Effective Public Services
-    </div>
-    <div class="span2 text-center">
-      <div class="feedback-count">{{ unpub_count.other }}</div>
-      Other Benefits
+      <div class="feedback-count">{{ unpub_count }}</div>
+      Comment{% if unpub_count != 1 %}s{% endif %}
     </div>
   </div>
 </div>
