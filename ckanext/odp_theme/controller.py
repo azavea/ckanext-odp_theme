@@ -19,11 +19,20 @@ class UnpublishedFeedbackController(p.toolkit.BaseController):
                    'user': c.user or c.author, 'for_view': True,
                    'auth_user_obj': c.userobj}
         data_dict = {'id': id}
+        data = tk.request.POST
+        session = context['session']
         try:
             c.pkg_dict = tk.get_action('package_show')(context, data_dict)
             c.pkg_revisions = tk.get_action('package_revision_list')(context,
                                                                      data_dict)
             c.pkg = context['package']
+            if (tk.request.method == 'POST' and c.userobj and
+                    c.userobj.sysadmin and 'delete' in data):
+                # sysadmin can delete comments
+                UnpublishedFeedback.get(id=data['id']).delete()
+                session.commit()
+                return tk.redirect_to(controller='package', action='read',
+                                      id=c.pkg.name)
             if c.userobj:
                 c.user_feedback = UnpublishedFeedback.get(dataset=c.pkg.id,
                                                           user=c.userobj.id)
@@ -31,20 +40,15 @@ class UnpublishedFeedbackController(p.toolkit.BaseController):
                     c.user_feedback = UnpublishedFeedback()
                     c.user_feedback.dataset = c.pkg.id
                     c.user_feedback.user = c.userobj.id
-            if tk.request.method == 'POST':  # INSERT/UPDATE/DELETE
-                data = tk.request.POST
-                empty = True
-                if 'comment' in data and data['comment'].strip() != '':
-                    empty = False
-                    setattr(c.user_feedback, 'comments', data['comment'])
-                session = context['session']
-                if not empty:
-                    c.user_feedback.modified = datetime.datetime.utcnow()
-                    c.user_feedback.save()
-                    session.add(c.user_feedback)
-                elif c.user_feedback.id:
-                    c.user_feedback.delete()
-                session.commit()
+                if tk.request.method == 'POST':  # INSERT/UPDATE/DELETE
+                    if 'comment' in data and data['comment'].strip() != '':
+                        setattr(c.user_feedback, 'comments', data['comment'])
+                        c.user_feedback.modified = datetime.datetime.utcnow()
+                        c.user_feedback.save()
+                        session.add(c.user_feedback)
+                    elif c.user_feedback.id:
+                        c.user_feedback.delete()
+                    session.commit()
 
             c.pkg_feedback = UnpublishedFeedback.get_for_package(c.pkg.id).all()
         except tk.NotAuthorized:
