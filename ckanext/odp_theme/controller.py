@@ -9,6 +9,38 @@ from ckan.common import c
 from feedback_model import UnpublishedFeedback
 
 
+class UnpublishedReportController(p.toolkit.BaseController):
+    controller = 'ckanext.odp_theme.controller:UnpublishedReportController'
+
+    def _is_unpublished(self, pkg):
+        extras = dict(map(lambda extra: (extra['key'], extra['value']),
+                          pkg['extras']))
+        return ('published' in extras and
+                extras['published'].lower() == 'false')
+
+    def view_org(self, org_id):
+        """
+        Renders a report of comments on unpublished datasets
+        for a given organization.
+        """
+        context = {'model': model, 'session': model.Session,
+                   'user': c.user or c.author, 'for_view': True,
+                   'auth_user_obj': c.userobj}
+
+        org = tk.get_action('organization_show')(context, {'id': org_id})
+        users = map(lambda user: user['id'], org['users'])
+        if not c.userobj or (c.userobj.id not in users
+                             and not c.userobj.sysadmin):
+            tk.abort(401, tk._('Unauthorized to read report'))
+        packages = filter(self._is_unpublished, org['packages'])
+        for pkg in packages:
+            pkg['unpublished_count'] = UnpublishedFeedback.count_for_package(pkg['id'])
+        packages.sort(key=lambda x: x['unpublished_count'])
+        c.packages = reversed(packages)
+
+        return tk.render('feedback/org.html')
+
+
 class UnpublishedFeedbackController(p.toolkit.BaseController):
     controller = 'ckanext.odp_theme.controller:UnpublishedFeedbackController'
 
