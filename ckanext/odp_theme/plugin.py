@@ -18,10 +18,16 @@ def most_recent_datasets(num=3):
 
     # the current_package_list_with_resources action returns private resources
     # which need to be filtered
-    datasets = tk.get_action('current_package_list_with_resources')({},
-                             {'limit': 100})
 
-    return filter(lambda ds: not ds['private'], datasets)[:num]
+    datasets = []
+    i = 0
+    while len(datasets) < num:
+        datasets += filter(lambda ds: not ds['private'],
+                           tk.get_action('current_package_list_with_resources')({},
+                                         {'limit': num, 'offset': i * num}))
+        i += 1
+
+    return datasets[:num]
 
 
 def apps(featured_only=True):
@@ -36,7 +42,8 @@ def apps(featured_only=True):
 def dataset_count():
     """Return a count of all datasets"""
 
-    return len(tk.get_action('package_list')({}, {}))
+    result = tk.get_action('package_search')({}, {'rows': 1})
+    return result['count']
 
 
 def groups():
