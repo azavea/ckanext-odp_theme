@@ -1,0 +1,6 @@
+<div class="vizcarousel-desc">
+  <h1 class="vizcarousel-desc-text"><a href="http://schoolbudget.phl.io/" target="_blank">School District of Philadelphia Budget</a></h1>
+  <p class="vizcarousel-desc-text author">by <a href="https://twitter.com/themightychris" target="_blank">Chris Alfano</a> and <a href="https://twitter.com/laurenancona" target="_blank">Lauren Ancona</a></p>
+  <p class="vizcarousel-desc-text">Built using <a href="dataset/school-district-budget-data">School District Budget Data</a>.</p>
+</div>
+<img src="/img/odp-viz-7.png" srcset="/img/odp-viz-7@2x.png 2x">
