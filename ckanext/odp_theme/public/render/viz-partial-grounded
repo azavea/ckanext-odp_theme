@@ -1,6 +1,6 @@
 <div class="vizcarousel-desc">
-  <h1 class="vizcarousel-desc-text">Grounded in Philly</h1>
-  <p class="vizcarousel-desc-text author">by The Garden Justice Legal Initiative & 596 Acres</p>
+  <h1 class="vizcarousel-desc-text"><a target="_blank" href="http://www.groundedinphilly.org/">Grounded in Philly</a></h1>
+  <p class="vizcarousel-desc-text author">by <a target="_blank" href="http://www.pilcop.org/garden-justice-legal-initiative-gjli/">The Garden Justice Legal Initiative</a> & <a target="_blank" href="http://596acres.org/">596 Acres</a></p>
   <p class="vizcarousel-desc-text">
     Built using <a href="/dataset/zoning">Parcel Outlines</a>, <a href="/dataset/land-use">Land Use</a>, and <a href="http://www.groundedinphilly.org/about/our-data/">more</a>.
   </p>

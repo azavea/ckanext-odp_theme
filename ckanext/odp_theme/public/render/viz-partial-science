@@ -1,0 +1,6 @@
+<div class="vizcarousel-desc">
+  <h1 class="vizcarousel-desc-text"><a href="http://jawaseph.github.io/centercityscience/" target="_blank">Center City Science</a></h1>
+  <p class="vizcarousel-desc-text author">by <a href="http://jawaseph.github.io/centercityscience/about.html" target="_blank">J. Calamia</a></p>
+  <p class="vizcarousel-desc-text">Built using <a href="/dataset/bike-network">Bike Network</a>.</p>
+</div>
+<img src="/img/odp-viz-8.png" srcset="/img/odp-viz-8@2x.png 2x">

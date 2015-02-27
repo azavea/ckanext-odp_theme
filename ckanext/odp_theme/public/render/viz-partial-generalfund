@@ -1,0 +1,6 @@
+<div class="vizcarousel-desc">
+  <h1 class="vizcarousel-desc-text"><a target="_blank" href="http://chriswhong.github.io/phillyBudget/">Philadelphia 2012 General Fund</a></h1>
+  <p class="vizcarousel-desc-text author"><a target="_blank" href="http://chriswhong.com/">by Chris Whong</a></p>
+  <p class="vizcarousel-desc-text">Built using <a href="/dataset/city-of-philadelphia-fy2012-financial-report">City of Philadelphia FY2012 Financial Report</a>.</p>
+</div>
+<img src="/img/odp-viz-6.png" srcset="/img/odp-viz-6@2x.png 2x">
