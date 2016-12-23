@@ -1,6 +1,6 @@
 <div class="vizcarousel-desc">
   <h1 class="vizcarousel-desc-text"><a target="_blank" href="http://visualization.phillybuildingbenchmarking.com/">Building Energy Efficiency</a></h1>
   <p class="vizcarousel-desc-text author">by <a href="http://branigan.net" target="_blank">John Branigan</a></p>
-  <p class="vizcarousel-desc-text">Built using <a href="/dataset/building-energy-benchmarking">Mayors Office of Energy Building Energy Efficiency Data</a>.</p>
+  <p class="vizcarousel-desc-text">Built using <a href="/dataset/city-building-energy-benchmarking">Mayors Office of Energy Building Energy Efficiency Data</a>.</p>
 </div>
 <img src="/img/odp-viz-4.png" srcset="/img/odp-viz-4@2x.png 2x">
