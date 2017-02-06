@@ -13,21 +13,13 @@ from ckan.lib.activity_streams import \
 
 from feedback_model import init_db, UnpublishedFeedback
 
+
 def most_recent_datasets(num=3):
     """Return a list of recent datasets."""
-
-    # the current_package_list_with_resources action returns private resources
-    # which need to be filtered
-
-    datasets = []
-    i = 0
-    while len(datasets) < num:
-        datasets += filter(lambda ds: not ds['private'],
-                           tk.get_action('current_package_list_with_resources')({},
-                                         {'limit': num, 'offset': i * num}))
-        i += 1
-
-    return datasets[:num]
+    datasets = tk.get_action('package_search')({}, {'sort': 'metadata_modified desc',
+                                                    'fq': 'private:false',
+                                                    'rows': num})
+    return datasets.get('results', [])
 
 
 def apps(featured_only=True):
