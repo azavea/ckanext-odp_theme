@@ -1,7 +1,6 @@
 
 import datetime
 
-import ckan.plugins as p
 import ckan.model as model
 from ckan.plugins import toolkit as tk
 from ckan.common import c
@@ -9,7 +8,7 @@ from ckan.common import c
 from feedback_model import UnpublishedFeedback
 
 
-class UnpublishedReportController(p.toolkit.BaseController):
+class UnpublishedReportController(tk.BaseController):
     controller = 'ckanext.odp_theme.controller:UnpublishedReportController'
 
     def _is_unpublished(self, pkg):
@@ -41,7 +40,7 @@ class UnpublishedReportController(p.toolkit.BaseController):
         return tk.render('feedback/org.html')
 
 
-class UnpublishedFeedbackController(p.toolkit.BaseController):
+class UnpublishedFeedbackController(tk.BaseController):
     controller = 'ckanext.odp_theme.controller:UnpublishedFeedbackController'
 
     def view_feedback(self, id):
