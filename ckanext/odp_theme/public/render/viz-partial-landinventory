@@ -1,5 +1,5 @@
 <div class="vizcarousel-desc">
-  <h1 class="vizcarousel-desc-text"><a target="_blank" href="http://cfabrigadephiladelphia.github.io/philly-urban-agriculture/">Philadelphia Land Inventory for Urban Agriculture</a></h1>
+  <h1 class="vizcarousel-desc-text"><a target="_blank" href="http://codeforphilly.github.io/philly-urban-agriculture/">Philadelphia Land Inventory for Urban Agriculture</a></h1>
   <p class="vizcarousel-desc-text author">by <a target="_blank" href="https://github.com/flibbertigibbet">Kathryn Killebrew</a></p>
   <p class="vizcarousel-desc-text">
     Built using <a href="/dataset/land-use">Land Use</a>, <a href="/dataset/philadelphia-land-cover-raster">Philadelphia Land Cover Raster 2008</a>, and <a href="https://codeforphilly.org/projects/FPAC_Urban_Agriculture_Land_Inventory">more</a>.
