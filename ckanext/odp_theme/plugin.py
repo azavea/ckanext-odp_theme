@@ -2,6 +2,7 @@
 from collections import OrderedDict
 
 import pylons
+from pylons import config
 
 from jinja2 import Undefined
 
@@ -59,6 +60,10 @@ def feedback_for_pkg(pkgid):
     """Return all feedback for a dataset"""
 
     return UnpublishedFeedback.get_for_package(pkgid).all()
+
+
+def ckan_site_url():
+    return config.get('ckan.site_url', '').rstrip('/')
 
 
 # monkeypatch activity streams
@@ -172,7 +177,8 @@ class ODPThemePlugin(ODPSearchPlugin):
                 'odp_theme_apps': apps,
                 'unpublished_count': UnpublishedFeedback.count_for_package,
                 'user_feedback': user_feedback,
-                'feedback_for_pkg': feedback_for_pkg}
+                'feedback_for_pkg': feedback_for_pkg,
+                'ckan_site_url': ckan_site_url}
 
     def before_map(self, map):
         return map
