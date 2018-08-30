@@ -59,7 +59,7 @@ Example:
         {% endblock %}
       </div>
       {% block resources %}
-        {% if package.resources and not hide_resources %}
+        {% if package.resources and not hide_resources and h.dict_list_reduce(package.resources, 'format') %}
           {% block resources_outer %}
             <ul class="dataset-resources list-unstyled">
               {% block resources_inner %}
