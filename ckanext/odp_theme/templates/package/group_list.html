@@ -2,7 +2,7 @@
 {% import 'macros/form.html' as form %}
 
 {% block primary_content_inner %}
-  <h2 class="hide-heading">{{ _('Groups') }}</h2>
+  <h2 class="hide-heading">{{ _('Topics') }}</h2>
 
   {% if group_dropdown %}
     <form class="add-to-group" method="post">
@@ -11,7 +11,7 @@
           <option value="{{ option[0] }}"> {{ option[1] }}</option>
         {% endfor %}
       </select>
-      <button type="submit" class="btn btn-primary" title="{{ _('Associate this group with this dataset') }}">{{ _('Add to group') }}</button>
+      <button type="submit" class="btn btn-primary" title="{{ _('Associate this topic with this dataset') }}">{{ _('Add to topic') }}</button>
     </form>
   {% endif %}
 
@@ -20,7 +20,7 @@
       {% snippet 'group/snippets/group_list.html', groups=pkg_dict.groups %}
     </form>
   {% else %}
-    <p class="empty">{{ _('There are no groups associated with this dataset') }}</p>
+    <p class="empty">{{ _('There are no topics associated with this dataset') }}</p>
   {% endif %}
 
 {% endblock %}
