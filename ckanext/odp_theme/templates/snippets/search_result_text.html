@@ -18,10 +18,10 @@ Example:
   {% set text_no_query_none = _('No datasets found') %}
 
 {% elif type == 'group' %}
-  {% set text_query = ungettext('{number} group found for "{query}"', '{number} groups found for "{query}"', count) %}
-  {% set text_query_none = _('No groups found for "{query}"') %}
-  {% set text_no_query = ungettext('{number} group found', '{number} groups found', count) %}
-  {% set text_no_query_none = _('No groups found') %}
+  {% set text_query = ungettext('{number} topic found for "{query}"', '{number} topics found for "{query}"', count) %}
+  {% set text_query_none = _('No topics found for "{query}"') %}
+  {% set text_no_query = ungettext('{number} topic found', '{number} topics found', count) %}
+  {% set text_no_query_none = _('No topics found') %}
 
 {% elif type == 'organization' %}
   {% set text_query = ungettext('{number} organization found for "{query}"', '{number} organizations found for "{query}"', count) %}
