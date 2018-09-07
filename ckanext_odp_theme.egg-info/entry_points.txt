@@ -1,5 +1,0 @@
-
-        [ckan.plugins]
-        # Add plugins here, e.g.
-        odp_theme=ckanext.odp_theme.plugin:ODPThemePlugin
-    
