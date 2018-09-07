@@ -205,6 +205,7 @@ h2.module-heading {
   left: 10px;
   right: 0;
   width: 25px;
+  margin-top: -11px;
 }
 
 .search-form .search-input.search-giant button i {
@@ -312,6 +313,7 @@ label {
 
 .main-search {
   padding-top: 34px !important;
+  min-height: auto;
 }
 
 .dataset-heading a {
