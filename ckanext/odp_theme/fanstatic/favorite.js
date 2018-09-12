@@ -5,7 +5,7 @@ $('#vizcarousel').carousel({
 });
 
 // when the carousel slides, load the ajax content
-$('#vizcarousel').on('slid', function (e) {
+$('#vizcarousel').on('slid.bs.carousel', function (e) {
     // get index of currently active item
     var idx = $('#vizcarousel .item.active').index();
     var url = $('.item.active').data('url');
@@ -25,6 +25,8 @@ $('.carousel-inner').hover(
     }
 );
 
-$('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){
-    $('#vizcarousel').carousel(0);
-});
+if ($('#vizcarousel').length) {
+    $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){
+        $('#vizcarousel').carousel(0);
+    });
+}

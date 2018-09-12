@@ -12,13 +12,13 @@ dropdown in the settings page and rename this file layout4.html.
   <div role="main" class="hero inner">
     <div class="container">
       <div class="row row1">
-        <div class="span6 col1">
+        <div class="col-md-6 col1">
           <div class="module-content">
             <h1 class="hero-text-heading hero-text">Your source for open data in the Philadelphia region</h1>
             <p class="hero-text-description hero-text">OpenDataPhilly is a catalog of open data in the Philadelphia region. In addition to being the official open data repository for the City, it includes data sets from many organizations in the region.</p>
           </div>
         </div>
-        <div class="span4 col1">
+        <div class="col-md-5 col1">
           <div class="carousel-controls">
             <a class="carousel-control left" href="#vizcarousel" data-slide="prev"><img src="/img/larrow.svg"></a>
             <a class="carousel-control right" href="#vizcarousel" data-slide="next"><img src="/img/rarrow.svg"></a>
@@ -44,10 +44,10 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main" class="main-search">
   <div class="container">
     <div class="row row1">
-      <div class="span6 col1">
+      <div class="col-md-6 col1">
         {% snippet 'home/snippets/search.html' %}
       </div>
-      <div class="span4 offset1 col1">
+      <div class="col-md-5 col-md-offset-1">
         <div class="module-content box getstarted">
           <p>
             Get started by searching from
@@ -63,7 +63,7 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main" class="main-browse">
   <div class="container">
     <div class="row row2">
-      <div class="span12 col1">
+      <div class="col-md-12 col1">
         <div class="module-content box">
           <h1 class="browse-heading">Browse by Topic</h1>
           <div>
@@ -84,10 +84,12 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main" class="main-featured">
   <div class="container">
     <div class="row row2">
-      <div class="span12 col1">
+      <div class="col-md-12 col1">
         <div class="module-content box">
           <h1 class="featured-heading">Featured Projects</h1>
+            {#
             {% snippet "related/snippets/related_list.html", related_items=h.odp_theme_apps() %}
+            #}
         </div>
       </div>
     </div>
@@ -96,10 +98,10 @@ dropdown in the settings page and rename this file layout4.html.
 <div role="main" class="main-updates">
   <div class="container">
     <div class="row row2">
-      <div class="span6 col1">
+      <div class="col-md-6 col1">
         {% snippet 'home/snippets/latest_datasets.html' %}
       </div>
-      <div class="span6 col2">
+      <div class="col-md-6 col2">
         <div class="module-content box">
           <h2 class="secondary-heading">Tweets</h2>
           <a class="twitter-timeline"  height="420" data-chrome="nofooter noscrollbar  noheader transparent" href="https://twitter.com/opendataphilly" data-widget-id="547080711753449472">Tweets by @opendataphilly</a>

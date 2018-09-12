@@ -1,6 +1,10 @@
 {% ckan_extends %}
 {% block primary %}
-<div{% if self.secondary()|trim != '' %} class="primary"{% endif %}>
+{# If there's a secondary panel (i.e. a sidebar), then we want the 'primary' class, which pushes
+   the panel right to make room, and we want to use 9 columns.  If there's no secondary panel, drop
+   the 'primary' class so there won't be useless whitespace on the left, and use all 12 columns.
+#}
+<div class="{% if self.secondary()|trim != '' %}primary col-sm-9 {% else %}col-sm-12 {% endif %}col-xs-12">
     {#
     The primary_content block can be used to add content to the page.
     This is the main block that is likely to be used within a template.
