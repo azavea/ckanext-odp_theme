@@ -436,3 +436,10 @@ label {
 .input-group-btn {
   padding-left: 1px;
 }
+
+// Fix PDF previewer height. See related:
+// https://github.com/derilinx/ckanext-pdfview/commit/36081910d5bc38dcfbe82ac596c34c3b3be36107
+.ckanext-datapreview > iframe {
+  min-height: 500px;
+}
+
