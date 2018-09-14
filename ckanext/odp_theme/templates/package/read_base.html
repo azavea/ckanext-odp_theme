@@ -5,12 +5,3 @@
   {{ h.build_nav_icon('dataset_activity', _('Activity Stream'), id=pkg.name) }}
   {# {{ h.build_nav_icon('related_list', _('Related'), id=pkg.name) }} #}
 {% endblock %}
-
-{% block primary_content %}
-    {{ super() }}
-
-    <div class="google-groups-link">
-      <h3>{{ _('Discussion') }}</h3>
-      Trouble downloading or have questions about this dataset? Visit the <a href="https://groups.google.com/forum/#!forum/opendataphilly">OpenDataPhilly Discussion Group</a>.
-    </div>
-{% endblock %}
