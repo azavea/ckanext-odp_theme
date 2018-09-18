@@ -29,6 +29,10 @@ def groups():
     return tk.get_action('group_list')({}, {'all_fields': True})
 
 
+def package_showcase_list(context):
+    return tk.get_action('ckanext_package_showcase_list')({}, {'package_id': context.pkg_dict['id']})
+
+
 def ckan_site_url():
     return config.get('ckan.site_url', '').rstrip('/')
 
@@ -94,7 +98,8 @@ class ODPThemePlugin(plugins.SingletonPlugin):
         return {'odp_theme_most_recent_datasets': most_recent_datasets,
                 'odp_theme_dataset_count': dataset_count,
                 'odp_theme_groups': groups,
-                'ckan_site_url': ckan_site_url}
+                'ckan_site_url': ckan_site_url,
+                'package_showcase_list': package_showcase_list}
 
     def before_map(self, map):
         return map
