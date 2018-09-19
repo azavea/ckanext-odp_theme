@@ -1,4 +1,14 @@
 {% ckan_extends %}
+
+
+{% block package_description %}
+  {{ super() }}
+
+  {% if h.package_showcase_list(c) %}
+      {% snippet "showcase/snippets/showcase_list.html", packages=h.package_showcase_list(c), pkg_id=c.pkg_dict.name %}
+  {% endif %}
+{% endblock %}
+
 {% block primary_content_inner %}
     {{ super() }}
 

@@ -16,15 +16,6 @@ def most_recent_datasets(num=3):
     return datasets.get('results', [])
 
 
-def apps(featured_only=True):
-    """Return apps for all datasets."""
-
-    apps = tk.get_action('related_list')({}, {'type_filter': 'application',
-                                              'featured': featured_only})
-
-    return apps
-
-
 def dataset_count():
     """Return a count of all datasets"""
 
@@ -36,6 +27,10 @@ def groups():
     """Return a list of groups"""
 
     return tk.get_action('group_list')({}, {'all_fields': True})
+
+
+def package_showcase_list(context):
+    return tk.get_action('ckanext_package_showcase_list')({}, {'package_id': context.pkg_dict['id']})
 
 
 def ckan_site_url():
@@ -103,8 +98,8 @@ class ODPThemePlugin(plugins.SingletonPlugin):
         return {'odp_theme_most_recent_datasets': most_recent_datasets,
                 'odp_theme_dataset_count': dataset_count,
                 'odp_theme_groups': groups,
-                'odp_theme_apps': apps,
-                'ckan_site_url': ckan_site_url}
+                'ckan_site_url': ckan_site_url,
+                'package_showcase_list': package_showcase_list}
 
     def before_map(self, map):
         return map
