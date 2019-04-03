@@ -37,17 +37,27 @@ def ckan_site_url():
     return config.get('ckan.site_url', '').rstrip('/')
 
 
-# monkeypatch activity streams
+# monkeypatch activity streams to rename 'group' to 'topic'
 activity_streams['changed group'] = (
     lambda c, a: tk._("{actor} updated the topic {group}")
 )
-
 activity_streams['deleted group'] = (
     lambda c, a: tk._("{actor} deleted the topic {group}")
 )
-
 activity_streams['new group'] = (
     lambda c, a: tk._("{actor} created the topic {group}")
+)
+
+# Add back activity types removed in the 'related'->'showcase' upgrade.
+# They'll be generic, but at least they won't crash.
+activity_streams['changed related item'] = (
+    lambda c, a: tk._("{actor} updated a related item.")
+)
+activity_streams['deleted related item'] = (
+    lambda c, a: tk._("{actor} deleted a related item.")
+)
+activity_streams['new related item'] = (
+    lambda c, a: tk._("{actor} created a related item.")
 )
 
 
